@@ -18,15 +18,10 @@ async function showLaunches(retries) {
     launchesThisYear.forEach((launch) => {
       if (launch.links.patch.large) {
         const container = document.createElement("div");
-        container.style.padding = "20px";
-        container.style.display = "flex";
-        container.style.justifyContent = "space-between";
-        container.style.alignItems = "center";
-        container.style.flexDirection = "column";
         container.classList.add("container");
 
         const name = document.createElement("h2");
-        name.style.width = "400px";
+        name.classList.add("mission-name");
         name.innerText = launch.name;
         container.appendChild(name);
 
@@ -43,14 +38,12 @@ async function showLaunches(retries) {
 
         const img = document.createElement("img");
         img.src = launch.links.patch.large;
-        img.style.width = "400px";
+        img.classList.add("mission-patch");
         container.appendChild(img);
 
         const button = document.createElement("button");
         button.onclick = showDetails;
         button.innerText = "Details";
-        button.style.display = "block";
-        button.style.margin = "20px";
         button.classList.add("button--details");
 
         if (!launch.details) {
