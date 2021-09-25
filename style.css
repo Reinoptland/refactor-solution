@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  font-family: "Bungee", cursive;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Bungee", cursive;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Bungee", cursive;
+  margin: 0 0 20px 0;
+}
+
+#root {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#overlay {
+  position: fixed;
+  top: 60vh;
+  width: 65vw;
+  left: 17.5vw;
+  background-color: #3836ff;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 40px;
+  display: none;
+}
+
+#details {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.5;
+}
+
+.button--close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.button--details {
+  background-color: white;
+  color: #3836ff;
+  border: 5px solid #3836ff;
+  width: 200px;
+  font-size: 20px;
+  border-radius: 40px;
+  transition: 0.3s;
+}
+
+.button--details:disabled {
+  color: grey;
+  border: 5px solid grey;
+}
+
+.button--details:hover:not([disabled]) {
+  transform: scale(1.2);
+}
