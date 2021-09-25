@@ -51,13 +51,12 @@ async function showLaunches() {
   const launchesThisYear = selectLaunchesFromLastYearWithPatches(launches);
 
   launchesThisYear.forEach((launch) => {
-    const container = document.createElement("div");
-    container.classList.add("container");
+    const template = document.getElementById("mission-card-template");
+    const root = document.getElementById("root");
 
-    const name = document.createElement("h2");
-    name.classList.add("mission-name");
-    name.innerText = launch.name;
-    container.appendChild(name);
+    const missionCard = template.content.cloneNode(true);
+
+    console.log(missionCard);
 
     function showDetails() {
       const cards = document.getElementsByClassName("container");
@@ -70,23 +69,15 @@ async function showLaunches() {
       this.parentElement.style.backgroundColor = "#3836ff";
     }
 
-    const img = document.createElement("img");
-    img.src = launch.links.patch.large;
-    img.classList.add("mission-patch");
-    container.appendChild(img);
-
-    const button = document.createElement("button");
-    button.onclick = showDetails;
-    button.innerText = "Details";
-    button.classList.add("button--details");
-
+    missionCard.querySelector(".mission-name").innerText = launch.name;
+    missionCard.querySelector(".mission-patch").src = launch.links.patch.large;
+    const detailsButton = missionCard.querySelector(".button--details");
+    detailsButton.onclick = showDetails;
     if (!launch.details) {
-      button.disabled = true;
+      detailsButton.disabled = true;
     }
 
-    container.appendChild(button);
-
-    document.getElementById("root").appendChild(container);
+    root.appendChild(missionCard);
   });
 }
 
